@@ -1,0 +1,19 @@
+{
+  "name": "gol",
+  "version": "1.0.0",
+  "description": "to do app using Node, Express, and SQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asantos3026/gol.git"
+  },
+  "author": "aileen santos and syd rothman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asantos3026/gol/issues"
+  },
+  "homepage": "https://github.com/asantos3026/gol#readme"
+}
