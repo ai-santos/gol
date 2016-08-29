@@ -1,1 +1,3 @@
-server.js
+import express from 'express'
+
+const server = express()
