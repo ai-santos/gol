@@ -23,6 +23,13 @@ router.get('/logout', (request, response) => {
   })
 })
 
+router.get('/dashboard', (request, response) => {
+
+  response.render('users/dashboard', {
+
+  })
+})
+
 const renderError = function(response){
   return function(error){
     response.status(500).render('error',{
