@@ -4,7 +4,23 @@ const router = express.Router()
 
 router.get('/signup', (request, response) => {
 
-  response.render('users/signup', {})
+  response.render('users/signup', {
+
+  })
+})
+
+router.get('/login', (request, response) => {
+
+  response.render('users/login', {
+
+  })
+})
+
+router.get('/logout', (request, response) => {
+
+  response.render('homepage', {
+
+  })
 })
 
 const renderError = function(response){

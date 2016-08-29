@@ -13,6 +13,4 @@ server.set('view engine', 'pug')
 
 //user routes
 server.use('/', routes)
-server.get('/', (req,res) => {
-  res.send('hello auto deployed world')
-})
+
