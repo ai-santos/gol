@@ -4,7 +4,7 @@
   "description": "to do app using Node, Express, and SQL",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/asantos3026/gol/issues"
   },
-  "homepage": "https://github.com/asantos3026/gol#readme"
+  "homepage": "https://github.com/asantos3026/gol#readme",
+  "devDependencies": {
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6"
+  }
 }
