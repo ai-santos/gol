@@ -39,6 +39,15 @@ The App: As a user...
 
 ---
 
+## Deploying to Heroku
+
+Do this to allow dev dependencies to be installed on heroku
+So we can build babel when we deploy
+```
+heroku config:set NPM_CONFIG_PRODUCTION=false
+```
+
+
 ## License 
 <!-- LICENSE -->
 

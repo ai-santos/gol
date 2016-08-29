@@ -10,7 +10,9 @@
   "scripts": {
     "build": "babel --copy-files src --out-dir dist",
     "build:watch": "npm run build -- --watch",
-    "start": "node dist/server.js"
+    "heroku-postbuild": "npm run build",
+    "start": "node dist/server.js",
+    "start:dev": "nodemon dist/server.js"
   },
   "repository": {
     "type": "git",
