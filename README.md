@@ -26,19 +26,16 @@ The App: As a user...
 - [ ] I can log into my account.
 - [ ] I can edit the text on existing to do's.
 
-#### Additional Specs: 
-- [ ] Create a database of to do list items.
-- [ ] Create the back end using node and express.
+#### Specs: 
+- [ ] Visitors can sign up, sign in and sign out.
+- [ ] Logged in users can CRUD to do list items on their one and only to do list.
+- [ ] Logged in users can order to do list items.
 - [ ] Deploy the app to heroku. 
-- [ ] JS Lint finds no mistakes
+- [ ] JS Hint finds no mistakes
 - [ ] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
+- [ ] Write all code in ES2016.
 - [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
-
-#### Stretch Goals/Nice to Have's:
-- [ ] I can create mulitple lists of to do's.
-- [ ] Write the app using ES6 and deploy using babel.
-
-
+- [ ] Logged in users can search their to do list items 
 
 ---
 
