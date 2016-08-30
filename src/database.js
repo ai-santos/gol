@@ -3,6 +3,45 @@ const connectionString = `postgres://${process.env.USER}@localhost:5432/${databa
 const pgp = require('pg-promise')()
 const db = pgp(connectionString)
 
+const createUser = function (attributes) {
+  const sql = `
+    INSERT INTO
+      users (email, encrypted_password, created_at)
+    VALUES
+      ($1, $2, now())
+    RETURNING
+      *
+  `
+  const variables = [
+    attributes.email,
+    attributes.password
+  ]
+
+  return db.one(sql, variables)
+}
+
+const authenticateUser = function (attributes) {
+  const sql = `
+    SELECT 
+      *
+    FROM
+      users
+    WHERE 
+      email=$1
+    AND
+      encrypted_password=$2
+    LIMIT
+      1
+  `
+  const variables = [
+    attributes.email,
+    attributes.password
+  ]
+
+  return db.oneOrNone(sql, variables)
+}
+
+
 //GET USER BY ID
 
 const getUserByIdSQL = () =>
@@ -87,6 +126,9 @@ const getFinalRank = (userId) => {
 
 getFinalRank(1).then( data => console.log(data))
 
+getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+
+
 // getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
 // getAllIncompleteTodosByUserId(1).then( data => console.log(data))
@@ -97,7 +139,15 @@ getFinalRank(1).then( data => console.log(data))
 
 // getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-
-module.exports = {
-  getUserByIdSQL, getUserById, getAllTodosByUserIdSQL, getAllTodosByUserID, getAllCompletedTodosByUserIdSQL, getAllCompletedTodosByUserId, getAllIncompleteTodosByUserIdSQL, getAllIncompleteTodosByUserId
+export default { 
+  getUserByIdSQL,
+  getUserById,
+  getAllTodosByUserIdSQL,
+  getAllTodosByUserID,
+  getAllCompletedTodosByUserIdSQL,
+  getAllCompletedTodosByUserId,
+  getAllIncompleteTodosByUserIdSQL,
+  getAllIncompleteTodosByUserId,
+  createUser,
+  authenticateUser
 }

@@ -11,9 +11,13 @@ html(lang="en")
         ul.list-inline
           li
             a(href="/") GOL
-          li
-            a(href="/login") Login
-          li
-            a(href="/signup") Signup
+          if loggedIn
+            li
+              a(href="/logout") Logout
+          else 
+            li
+              a(href="/login") Login
+            li
+              a(href="/signup") Signup
       
       block content
