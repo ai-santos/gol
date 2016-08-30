@@ -1,7 +1,10 @@
 import express from 'express';
 import database from '../database'
+import bcrypt from 'bcrypt'
 
+const salt = bcrypt.genSaltSync(10)
 const router = express.Router()
+
 
 router.use( (request, response, next) => {
   request.loggedIn = 'userId' in request.session
@@ -29,7 +32,8 @@ router.post('/signup', (request, response) => {
       newUser: newUser,
     })
     return
-  } 
+  }
+  newUser.encrypted_password = encryptPassword(newUser.password)
   database.createUser(newUser)
     .then(user => {
       request.session.userId = user.id
@@ -50,10 +54,11 @@ router.get('/logout', (request, response) => {
 })
 
 router.post('/login', (request, response) => {
+  var auth = request.body.user
 
-  database.authenticateUser(request.body.user)
+  database.authenticateUser(auth.email)
     .then(user => {
-      if (user){
+      if (user && matchPasswords(auth.password, user.encrypted_password)){
         request.session.userId = user.id
         response.redirect('/')
       } else {
@@ -78,6 +83,14 @@ const renderError = function(response){
       error: error
     })
   }
+}
+
+const encryptPassword = function(password){
+  return bcrypt.hashSync(password, salt)
+}
+
+const matchPasswords = function(password, encrypted_password){
+  return bcrypt.compareSync(password, encrypted_password)
 }
 
 module.exports = router
