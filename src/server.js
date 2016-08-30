@@ -3,6 +3,7 @@ import routes from './routes'
 import pug from 'pug'
 import path from 'path'
 import bodyParser from 'body-parser'
+import session from 'express-session'
 
 const server = express()
 
@@ -14,6 +15,7 @@ server.set('view engine', 'pug')
 // middleware
 server.use(express.static(__dirname+'/public'))
 server.use(bodyParser.urlencoded({ extended: true }))
+server.use(session({resave: true, saveUninitialized: true, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: 6000}}))
 
 
 // routes

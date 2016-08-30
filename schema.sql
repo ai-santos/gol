@@ -5,7 +5,7 @@ CREATE TABLE users(
   avatar VARCHAR(500),
   email VARCHAR(255) NOT NULL,
   encrypted_password VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP NOT NULL
+  created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 
 CREATE UNIQUE INDEX email ON users(email);
@@ -21,4 +21,7 @@ CREATE TABLE todos(
   rank INTEGER NOT NULL
 );
 
-
+INSERT INTO
+  users (avatar, email, encrypted_password, created_at)
+VALUES
+  (NULL, 'e@e.com', 123, now());
