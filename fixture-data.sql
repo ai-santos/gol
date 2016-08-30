@@ -12,4 +12,5 @@ VALUES
   ('buy milk', TRUE, now(), 1, 1),
   ('buy cereal', TRUE, now(), 1, 2),
   ('buy butter', FALSE, now(), 1, 3),
-  ('buy bread', TRUE, now(), 2, 1);
+  ('buy bread', TRUE, now(), 2, 1),
+  ('buy butter', FALSE, now(), 2, 3);
