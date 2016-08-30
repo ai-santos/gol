@@ -92,14 +92,36 @@ const createTodoSQL = () =>
   VALUES ($1, $2, false, now(), $3)
   RETURNING *`
 
-const createTodo = (userId, title, rank) => {
-  // let finalRank = getFinalRank()
-  return db.one( createTodoSQL(), [ userId, title, rank])
+
+
+const createTodo = (userId, title) => {
+  return getFinalRank(userId).then(rank => {
+    const sql = `
+      INSERT INTO
+        todos (user_id, title, completed, created_at, rank)
+      VALUES 
+        ($1, $2, false, now(), $3)
+      RETURNING 
+        *
+    `
+    const variables = [
+      userId, 
+      title,
+      rank
+    ]
+    return db.one(sql, variables)
+  })
+
 }
 
-// const getFinalRank = () => {
-//   `SELECT LAST(rank) `
-// }
+//GET FINAL RANK
+
+const getFinalRankSQL = () => 
+  `SELECT MAX(rank)+1 as rank FROM todos WHERE user_id=$1`
+
+const getFinalRank = (userId) => {
+  return db.one( getFinalRankSQL(), [ userId ]).then(row => row.rank || 0)
+}
 
 //MARK TO-DO AS COMPLETE
 
@@ -115,17 +137,18 @@ const createTodo = (userId, title, rank) => {
 
 //DELETE TO-DO
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// createTodo(1, 'blah').then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
 export default { 
   getUserByIdSQL,
@@ -137,5 +160,9 @@ export default {
   getAllIncompleteTodosByUserIdSQL,
   getAllIncompleteTodosByUserId,
   createUser,
-  authenticateUser
+  authenticateUser,
+  getFinalRankSQL,
+  getFinalRank,
+  createTodoSQL,
+  createTodo
 }
