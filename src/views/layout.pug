@@ -1,11 +1,19 @@
 doctype html
-html(lang='en')
+html(lang="en")
   head
     title Gol
-
-    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
-    link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    link(rel="stylesheet" href="/stylesheets/style.css")
 
   body
-    header
-    block content
+    .container
+      header
+        ul.list-inline
+          li
+            a(href="/") GOL
+          li
+            a(href="/login") Login
+          li
+            a(href="/signup") Signup
+      
+      block content
