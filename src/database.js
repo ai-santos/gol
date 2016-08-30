@@ -149,5 +149,9 @@ export default {
   getAllIncompleteTodosByUserIdSQL,
   getAllIncompleteTodosByUserId,
   createUser,
-  authenticateUser
+  authenticateUser,
+  getFinalRankSQL,
+  getFinalRank,
+  createTodoSQL,
+  createTodo
 }
