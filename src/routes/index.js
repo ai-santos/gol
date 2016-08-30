@@ -1,7 +1,7 @@
 import express from 'express';
+import database from '../database'
 
 const router = express.Router()
-import database from '../database'
 
 router.use( (request, response, next) => {
   request.loggedIn = 'userId' in request.session
@@ -39,15 +39,30 @@ router.post('/signup', (request, response) => {
 })
 
 router.get('/login', (request, response) => {
-
+  const email = request.session.email
   response.render('users/login', {
-
   })
 })
 
 router.get('/logout', (request, response) => {
   delete request.session.userId
   response.redirect('/')
+})
+
+router.post('/login', (request, response) => {
+
+  database.authenticateUser(request.body.user)
+    .then(user => {
+      if (user){
+        request.session.userId = user.id
+        response.redirect('/')
+      } else {
+        response.status(400).render('users/login', {
+          error: 'Bad email or password'
+        })
+      }
+    })
+    .catch(renderError(response))
 })
 
 router.get('/dashboard', (request, response) => {

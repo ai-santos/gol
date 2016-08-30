@@ -20,6 +20,28 @@ const createUser = function (attributes) {
   return db.one(sql, variables)
 }
 
+const authenticateUser = function (attributes) {
+  const sql = `
+    SELECT 
+      *
+    FROM
+      users
+    WHERE 
+      email=$1
+    AND
+      encrypted_password=$2
+    LIMIT
+      1
+  `
+  const variables = [
+    attributes.email,
+    attributes.password
+  ]
+
+  return db.oneOrNone(sql, variables)
+}
+
 export default { 
-  createUser
+  createUser,
+  authenticateUser
 }
