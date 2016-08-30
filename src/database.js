@@ -3,30 +3,6 @@ const connectionString = `postgres://${process.env.USER}@localhost:5432/${databa
 const pgp = require('pg-promise')()
 const db = pgp(connectionString)
 
-//CREATE NEW USER
-
-const createUserSQL = () =>
-  `INSERT INTO users (avatar, email, encrypted_password, created_at) 
-   VALUES (NULL, $1, $2, $3, now()) 
-   RETURNING *`
-
-const createUser = (avatar, email, encrypted_password, created_at) => {
-  return db.one(createUserSQL(), [avatar, email, encrypted_password, created_at])
-}
-
-//AUTHENTICATE USER
-
-// const authenticateUserSQL = () =>
-//   `SELECT * 
-//   FROM users 
-//   WHERE email=$1 
-//   AND encrypted_password=$2 
-//   LIMIT 1`
-
-// const authenticateUser = (email, encrypted_password) => {
-//   return db.one(authenticateUser(), [email, encrypted_password])
-// }
-
 //GET USER BY ID
 
 const getUserByIdSQL = () =>
@@ -81,13 +57,13 @@ const createTodoSQL = () =>
   RETURNING *`
 
 const createTodo = (userId, title, rank) => {
-  let finalRank = getFinalRank()
+  // let finalRank = getFinalRank()
   return db.one( createTodoSQL(), [ userId, title, rank])
 }
 
-const getFinalRank = () => {
-  `SELECT LAST(rank) `
-}
+// const getFinalRank = () => {
+//   `SELECT LAST(rank) `
+// }
 
 //MARK TO-DO AS COMPLETE
 
