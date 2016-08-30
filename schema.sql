@@ -20,8 +20,3 @@ CREATE TABLE todos(
   created_at TIMESTAMP NOT NULL DEFAULT now(),
   rank INTEGER NOT NULL
 );
-
-INSERT INTO
-  users (avatar, email, encrypted_password, created_at)
-VALUES
-  (NULL, 'e@e.com', 123, now());
