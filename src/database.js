@@ -14,13 +14,13 @@ const createUser = function (attributes) {
   `
   const variables = [
     attributes.email,
-    attributes.password
+    attributes.encrypted_password
   ]
 
   return db.one(sql, variables)
 }
 
-const authenticateUser = function (attributes) {
+const authenticateUser = function (email) {
   const sql = `
     SELECT 
       *
@@ -28,14 +28,11 @@ const authenticateUser = function (attributes) {
       users
     WHERE 
       email=$1
-    AND
-      encrypted_password=$2
     LIMIT
       1
   `
   const variables = [
-    attributes.email,
-    attributes.password
+    email,
   ]
 
   return db.oneOrNone(sql, variables)
