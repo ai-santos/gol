@@ -57,13 +57,18 @@ const createTodoSQL = () =>
   RETURNING *`
 
 const createTodo = (userId, title, rank) => {
-  // let finalRank = getFinalRank()
+  let finalRank = getFinalRank(userId)
   return db.one( createTodoSQL(), [ userId, title, rank])
 }
 
-// const getFinalRank = () => {
-//   `SELECT LAST(rank) `
-// }
+//GET FINAL RANK
+
+const getFinalRankSQL = () => 
+  `SELECT rank FROM todos WHERE user_id=$1 ORDER BY rank DESC LIMIT 1`
+
+const getFinalRank = (userId) => {
+  return db.one( getFinalRankSQL(), [ userId ])
+}
 
 //MARK TO-DO AS COMPLETE
 
@@ -79,21 +84,18 @@ const createTodo = (userId, title, rank) => {
 
 //DELETE TO-DO
 
-createUser().then( data => console.log(data))
 
-authenticateUser().then( data => console.log(data))
+getFinalRank(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
-
-getAllIncompleteTodosByUserId(1).then( data => console.log(data))
+// getAllIncompleteTodosByUserId(1).then( data => console.log(data))
 
 
 module.exports = {
