@@ -119,7 +119,7 @@ router.post('/todos/:todoId', (request, response) => {
     .catch(renderError(response))
 })
 
-router.get('/todo/:todoId/delete', (request, response) => {
+router.get('/todos/:todoId/delete', (request, response) => {
   const userId = request.session.userId
   database.deleteTodo(request.params.todoId)
     .then(() => {
