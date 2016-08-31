@@ -242,7 +242,7 @@ const deleteTodoSQL = () =>
     todos.id=$1`
 
 const deleteTodo = (id) => {
-  return db.one( deleteTodoSQL(), [ id ])
+  return db.none( deleteTodoSQL(), [ id ])
 }
 
 

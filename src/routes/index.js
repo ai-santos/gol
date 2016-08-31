@@ -39,7 +39,7 @@ router.post('/signup', (request, response) => {
   database.createUser(newUser)
     .then(user => {
       request.session.userId = user.id
-      response.redirect('/')
+      response.redirect('/dashboard')
     })
     .catch(renderError(response))
 })
@@ -113,6 +113,15 @@ router.post('/todos/:todoId', (request, response) => {
   const attributes = request.body.todo || {}
   attributes.id = todoId
   database.updateTodo(attributes)
+  .then(() => {
+      response.redirect('/dashboard')
+    })
+    .catch(renderError(response))
+})
+
+router.get('/todos/:todoId/delete', (request, response) => {
+  const userId = request.session.userId
+  database.deleteTodo(request.params.todoId)
     .then(() => {
       response.redirect('/dashboard')
     })
