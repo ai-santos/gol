@@ -7,6 +7,8 @@ const router = express.Router()
 
 
 router.use( (request, response, next) => {
+  request.session.lastLogin = (new Date).toString()
+  request.session.requestCount++;
   request.loggedIn = 'userId' in request.session
   response.locals.loggedIn = request.loggedIn
   next()
@@ -88,7 +90,7 @@ router.get('/dashboard', (request, response) => {
     })
     .catch(renderError(response))
   } else {
-    response.render('/')
+    response.redirect('/')
   }
 })
 
