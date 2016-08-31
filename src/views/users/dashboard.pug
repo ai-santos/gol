@@ -1,8 +1,19 @@
 extends ../layout
 
 block content
-  table.table.table-striped
-    thead
-      tr
-        th Completed 
-        th To-do Item
+  h1 My Tasks
+
+  .container
+    h3= currentUser.email
+    for todo in todos
+      .row
+        .col-sm-3
+          span= todo.rank
+        .col-sm-3
+          span= todo.title
+        .col-sm-3
+          span= todo.completed
+        .col-sm-3
+          span= todo.created_at
+
+

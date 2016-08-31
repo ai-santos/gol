@@ -60,7 +60,7 @@ router.post('/login', (request, response) => {
     .then(user => {
       if (user && matchPasswords(auth.password, user.encrypted_password)){
         request.session.userId = user.id
-        response.redirect('/')
+        response.redirect('dashboard')
       } else {
         response.status(400).render('users/login', {
           error: 'Bad email or password'
@@ -71,10 +71,25 @@ router.post('/login', (request, response) => {
 })
 
 router.get('/dashboard', (request, response) => {
+    const userId = request.session.userId
+    if (userId){
+      Promise.all([
+        database.getUserById(userId),
+        database.getAllTodosByUserId(userId)
+      ])
+        .then(results => {
+          const currentUser = results[0]
+          const todos = results[1]
 
-  response.render('users/dashboard', {
-
-  })
+          response.render('users/dashboard', {
+            currentUser: currentUser,
+            todos: todos,
+          })
+        })
+        .catch(renderError(response))
+    } else {
+      response.render('/')
+    }
 })
 
 const renderError = function(response){
