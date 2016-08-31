@@ -1,0 +1,7 @@
+if error
+  h1= error
+form(method="post" action="/todo")
+  .form-group
+    label(for="title") Title
+    input#title.form-control(type="text" name="title" placeholder="title" value=title)
+  button.btn.btn-primary(type="submit") Create
