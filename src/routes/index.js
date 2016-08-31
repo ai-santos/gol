@@ -94,13 +94,13 @@ router.get('/dashboard', (request, response) => {
   }
 })
 
-router.post('/todo', (request, response) => {
+router.post('/todos', (request, response) => {
   const userId = request.session.userId
   if (!userId){
     response.redirect('/')
     return
   }
-  const title = request.body.title
+  const title = request.body.title || ''
   database.createTodo(userId, title)
     .then(() => {
       response.redirect('/dashboard')

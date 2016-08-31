@@ -65,8 +65,8 @@ const getAllTodosByUserIdSQL = () =>
   WHERE 
     user_id=$1
   ORDER BY
-    created_at ASC,
-    id DESC
+    created_at DESC,
+    id ASC
   `
 
 const getAllTodosByUserId = userId => {
