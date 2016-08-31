@@ -57,7 +57,7 @@ const getAllTodosByUserIdSQL = () =>
   FROM todos 
   WHERE user_id=$1`
 
-const getAllTodosByUserID = userId => {
+const getAllTodosByUserId = userId => {
   return db.any( getAllTodosByUserIdSQL(), [userId] )
 }
 
@@ -154,7 +154,7 @@ export default {
   getUserByIdSQL,
   getUserById,
   getAllTodosByUserIdSQL,
-  getAllTodosByUserID,
+  getAllTodosByUserId,
   getAllCompletedTodosByUserIdSQL,
   getAllCompletedTodosByUserId,
   getAllIncompleteTodosByUserIdSQL,
