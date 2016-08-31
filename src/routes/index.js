@@ -71,25 +71,39 @@ router.post('/login', (request, response) => {
 })
 
 router.get('/dashboard', (request, response) => {
-    const userId = request.session.userId
-    if (userId){
-      Promise.all([
-        database.getUserById(userId),
-        database.getAllTodosByUserId(userId)
+  const userId = request.session.userId
+  if (userId){
+    Promise.all([
+      database.getUserById(userId),
+      database.getAllTodosByUserId(userId)
       ])
-        .then(results => {
-          const currentUser = results[0]
-          const todos = results[1]
+    .then(results => {
+      const currentUser = results[0]
+      const todos = results[1]
 
-          response.render('users/dashboard', {
-            currentUser: currentUser,
-            todos: todos,
-          })
-        })
-        .catch(renderError(response))
-    } else {
-      response.render('/')
-    }
+      response.render('users/dashboard', {
+        currentUser: currentUser,
+        todos: todos,
+      })
+    })
+    .catch(renderError(response))
+  } else {
+    response.render('/')
+  }
+})
+
+router.post('/todo', (request, response) => {
+  const userId = request.session.userId
+  if (!userId){
+    response.redirect('/')
+    return
+  }
+  const title = request.body.title
+  database.createTodo(userId, title)
+    .then(() => {
+      response.redirect('/dashboard')
+    })
+    .catch(renderError(response))
 })
 
 const renderError = function(response){
