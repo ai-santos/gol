@@ -2,18 +2,30 @@ extends ../layout
 
 block content
   .row
-    h1.col-sm-12 My Tasks
+    .col-sm-12.page-header
+      h1 My Tasks
+      small= currentUser.email
 
-  
   .row
-    h3.col-sm-12= currentUser.email
+    .col-sm-4
+      input.form-control.todo-list-items-filter(type="text" value="" placeholder="filter…")
+        
+    .col-sm-6
+      span.btn-group.todo-list-items-filter-buttons(role="group")
+        button.btn.btn-default(data-filter="incomplete") incomplete
+        button.btn.btn-default.active(data-filter="all") all
+        button.btn.btn-default(data-filter="complete") complete
+      
+    .col-sm-2
+      button.btn.btn-secondary +
+ 
   for todo in todos
     form.row.todo-list-item(class=(todo.completed ? 'complete-todo-list-item' : '') method="post" action="/todos/"+todo.id)
-      .col-sm-10
+      .col-sm-9
         input.todo-list-item-checkbox(type="checkbox" name="todo[completed]" checked=todo.completed)
         span.todo-list-item-title=todo.title
-        input.todo-list-item-title-input(type="text" name="todo[title]" value=todo.title data-initial-value=todo.title)
-      .col-sm-2
+        input.form-control.todo-list-item-title-input(type="text" name="todo[title]" value=todo.title data-initial-value=todo.title)
+      .col-sm-3
         input.todo-list-item-edit-button.btn.btn-sm.btn-secondary(type="button" value="edit")
         .btn-group(role="group")
           input.todo-list-item-cancel-button.btn.btn-sm.btn-danger(type="button" value="cancel")
