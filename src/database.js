@@ -1,4 +1,4 @@
-eewdconst databaseName = 'goldb'
+const databaseName = 'goldb'
 const connectionString = `postgres://${process.env.USER}@localhost:5432/${databaseName}`
 const pgp = require('pg-promise')()
 const db = pgp(connectionString)
@@ -182,17 +182,37 @@ const updateTodoSQL =() =>
   WHERE
     todos.id=$2`
 
-const
+const updateTodo = (title, id) => {
+  return db.one( updateTodoSQL(), [ title, id ] )
+}
 
-//CHANGE RANK
+//MOVE TO-DO UP IN RANK
 
-const changeTodoRankSQL = () =>
+const moveTodoRankUpSQL = () =>
   `UPDATE
     todos
   SET
-    rank = (rank)+1 || (rank)-1
+    rank = (rank)-1
   WHERE
     todos.id=$1`
+
+const moveTodoRankUp = (id) => {
+  return db.one( moveTodoRankUpSQL(), [ id ])
+}
+
+//MOVE TO-DO DOWN IN RANK
+
+const moveTodoRankDownSQL = () =>
+  `UPDATE
+    todos
+  SET
+    rank = (rank)+1
+  WHERE
+    todos.id=$1`
+
+const moveTodoRankDown = (id) => {
+  return db.one( moveTodoRankDownSQL(), [ id ])
+}
 
 //DELETE TODO
 
@@ -202,19 +222,13 @@ const deleteTodoSQL = () =>
   WHERE
     todos.id=$1`
 
+const deleteTodo = (id) => {
+  return db.one( deleteTodoSQL(), [ id ])
+}
 
 
-markTodoComplete(1).then( data => console.log(data))
 
-markTodoIncomplete(1).then( data => console.log(data))
-
-updateTodo(1).then( data => console.log(data))
-
-changeTodoRank(1).then( data => console.log(data))
-
-markTodoComplete(1).then( data => console.log(data))
-
-
+moveTodoRankUp(2).then( data => console.log(data))
 
 export default { 
   getUserByIdSQL,
@@ -230,5 +244,17 @@ export default {
   getFinalRankSQL,
   getFinalRank,
   createTodoSQL,
-  createTodo
+  createTodo,
+  markTodoCompleteSQL,
+  markTodoComplete,
+  markTodoIncompleteSQL,
+  markTodoIncomplete,
+  updateTodoSQL,
+  updateTodo,
+  moveTodoRankUpSQL,
+  moveTodoRankUp,
+  moveTodoRankDownSQL,
+  moveTodoRankDown,
+  deleteTodoSQL,
+  deleteTodo
 }
