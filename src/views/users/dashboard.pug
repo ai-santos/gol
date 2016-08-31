@@ -31,7 +31,9 @@ block content
         span.todo-list-item-title=todo.title
         input.form-control.todo-list-item-title-input(type="text" name="todo[title]" value=todo.title data-initial-value=todo.title autofocus=newEmptyTodo)
       .col-sm-2
-        input.todo-list-item-edit-button.btn.btn-sm.btn-secondary(type="button" value="edit")
+        .btn-group(role="group")
+          input.todo-list-item-edit-button.btn.btn-sm.btn-secondary(type="button" value="edit")
+          a.todo-list-item-delete-button.btn.btn-sm.btn-danger(href="/todos/"+todo.id+"/delete") delete
         .btn-group(role="group")
           input.todo-list-item-cancel-button.btn.btn-sm.btn-danger(type="button" value="cancel")
           input.todo-list-item-submit-button.btn.btn-sm.btn-primary(type="submit" value="save")
