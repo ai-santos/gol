@@ -108,6 +108,17 @@ router.post('/todo', (request, response) => {
     .catch(renderError(response))
 })
 
+router.post('/todos/:todoId', (request, response) => {
+  const todoId = request.params.todoId
+  const attributes = request.body.todo || {}
+  attributes.id = todoId
+  database.updateTodo(attributes)
+    .then(() => {
+      response.redirect('/dashboard')
+    })
+    .catch(renderError(response))
+})
+
 const renderError = function(response){
   return function(error){
     response.status(500).render('error',{

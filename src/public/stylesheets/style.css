@@ -1,2 +1,38 @@
 
 
+.todo-list-item{
+  padding: 5px 10px 5px 0;
+}
+
+input.todo-list-item-checkbox{
+  margin-right: 1em;
+}
+
+.todo-list-item-title{
+}
+
+.todo-list-item-title-input{
+  display: none;
+  width: auto;
+  min-width: 80%;
+}
+
+.complete-todo-list-item .todo-list-item-title{
+  text-decoration: line-through;
+}
+
+.todo-list-item-submit-button,
+.todo-list-item-cancel-button{
+  display: none;
+}
+
+.todo-list-item.editing-todo-list-item .todo-list-item-submit-button,
+.todo-list-item.editing-todo-list-item .todo-list-item-cancel-button,
+.todo-list-item.editing-todo-list-item .todo-list-item-title-input{
+  display: inline;
+}
+
+.todo-list-item.editing-todo-list-item .todo-list-item-title,
+.todo-list-item.editing-todo-list-item .todo-list-item-edit-button{
+  display: none;
+}

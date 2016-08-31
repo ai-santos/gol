@@ -1,19 +1,22 @@
 extends ../layout
 
 block content
-  h1 My Tasks
+  .row
+    h1.col-sm-12 My Tasks
 
-  .container
-    h3= currentUser.email
-    for todo in todos
-      .row
-        .col-sm-3
-          span= todo.rank
-        .col-sm-3
-          span= todo.title
-        .col-sm-3
-          span= todo.completed
-        .col-sm-3
-          span= todo.created_at
+  
+  .row
+    h3.col-sm-12= currentUser.email
+  for todo in todos
+    form.row.todo-list-item(class=(todo.completed ? 'complete-todo-list-item' : '') method="post" action="/todos/"+todo.id)
+      .col-sm-10
+        input.todo-list-item-checkbox(type="checkbox" name="todo[completed]" checked=todo.completed)
+        span.todo-list-item-title=todo.title
+        input.todo-list-item-title-input(type="text" name="todo[title]" value=todo.title data-initial-value=todo.title)
+      .col-sm-2
+        input.todo-list-item-edit-button.btn.btn-sm.btn-secondary(type="button" value="edit")
+        .btn-group(role="group")
+          input.todo-list-item-cancel-button.btn.btn-sm.btn-danger(type="button" value="cancel")
+          input.todo-list-item-submit-button.btn.btn-sm.btn-primary(type="submit" value="save")
 
   include ../todos/new_todo_form

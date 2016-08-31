@@ -63,7 +63,11 @@ const getAllTodosByUserIdSQL = () =>
   FROM 
     todos 
   WHERE 
-    user_id=$1`
+    user_id=$1
+  ORDER BY
+    created_at ASC,
+    id DESC
+  `
 
 const getAllTodosByUserId = userId => {
   return db.any( getAllTodosByUserIdSQL(), [userId] )
@@ -182,8 +186,23 @@ const updateTodoSQL =() =>
   WHERE
     todos.id=$2`
 
-const updateTodo = (title, id) => {
-  return db.one( updateTodoSQL(), [ title, id ] )
+const updateTodo = (attributes) => {
+  // return db.one( updateTodoSQL(), [ title, id ] )
+  const sql = `
+    UPDATE
+      todos
+    SET
+      title=$2,
+      completed=$3
+    WHERE
+      id=$1
+  `
+  const variables = [
+    attributes.id,
+    attributes.title,
+    !!attributes.completed
+  ]
+  return db.none(sql, variables)
 }
 
 //MOVE TO-DO UP IN RANK
