@@ -36,6 +36,7 @@ router.post('/signup', (request, response) => {
     return
   }
   newUser.encrypted_password = encryptPassword(newUser.password)
+  newUser.avatar = database.generateAvatar()
   database.createUser(newUser)
     .then(user => {
       request.session.userId = user.id
@@ -82,10 +83,11 @@ router.get('/dashboard', (request, response) => {
     .then(results => {
       const currentUser = results[0]
       const todos = results[1]
+      const avatar = results[2]
 
       response.render('users/dashboard', {
         currentUser: currentUser,
-        todos: todos,
+        todos: todos
       })
     })
     .catch(renderError(response))
