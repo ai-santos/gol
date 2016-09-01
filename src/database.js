@@ -2,20 +2,22 @@ const databaseName = 'goldb'
 const connectionString = process.env.DATABASE_URL || `postgres://${process.env.USER}@localhost:5432/${databaseName}`
 const pgp = require('pg-promise')()
 const db = pgp(connectionString)
+const faker = require('faker')
 
 //CREATE A NEW USER
 
 const createUser = function (attributes) {
   const sql =
   `INSERT INTO
-      users (email, encrypted_password, created_at)
+      users (email, encrypted_password, created_at, avatar)
     VALUES
-      ($1, $2, now())
+      ($1, $2, now(), $3)
     RETURNING
       *`
   const variables = [
     attributes.email,
-    attributes.encrypted_password
+    attributes.encrypted_password,
+    attributes.avatar
   ]
 
   return db.one(sql, variables)
@@ -53,6 +55,12 @@ const getUserByIdSQL = () =>
 
 const getUserById = userId => {
   return db.one( getUserByIdSQL(), [userId] )
+}
+
+//GENERATE USER AVATAR
+const generateAvatar = () => {
+  const avatar = faker.image.avatar()
+  return avatar
 }
 
 //GET ALL TO-DO'S BY USER ID
@@ -283,5 +291,6 @@ export default {
   moveTodoUp,
   moveTodoDown,
   deleteTodoSQL,
-  deleteTodo
+  deleteTodo,
+  generateAvatar
 }
