@@ -10,30 +10,19 @@ html(lang="en")
 
   body
     .container
-      nav.content-width
-        ul#nav-ul
-          li.nav-links
-            a(href='/', title='Home') Home
-          li.nav-links
-            a(href='#', title='Blog') Blog
-          li.nav-links
-            a(href='#', title='Work') Work
-          li.nav-links
-            a(href='#', title='Resources') Resources
-          li.nav-links
-            a(href='#', title='Meta') Meta
-
       header
-        ul.list-inline
-          li
-            a(href="/") GOL
-          if loggedIn
+        nav
+          ul.header-list
             li
-              a(href="/logout") Logout
-          else 
-            li
-              a(href="/login") Login
-            li
-              a(href="/signup") Signup
+              a.brand(href='/' title="Home") 
+                img(src="http://i.imgur.com/gogZFsYt.jpg")
+            if loggedIn
+              li
+                a(href='/logout', title='Logout') Logout
+            else
+              li
+                a(href='/signup', title='Signup') Signup
+              li
+                a(href='/login', title='Login') Login
       
       block content

@@ -1,7 +1,40 @@
-#nav-ul, .content-width, .nav-links {
+a {
+  color: #337ab7;
+  text-decoration: none;
+  padding-right: 250px;
+  font-family: Open sans serif;
+  font-size: larger;
+}
+
+.header-list {
   display: flex;
-  width: 100%;
-  flex: 1 1 auto;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-list > li > a:hover {
+  display: block;
+  color: white;
+  text-decoration: none;
+  background-color: rgba(13, 60, 130, 0.92);
+}
+
+
+.header-list > li > a:hover, .header-list > li > a:focus {
+  display: block;
+  color: white;
+  text-decoration: none;
+  background-color: rgba(13, 60, 130, 0.92);
+}
+
+
+.nav-logo {
+  left: 0px;
+  position: fixed;
+  top: 0auto;
 }
 
 .todo-list-item{
