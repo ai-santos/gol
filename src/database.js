@@ -6,7 +6,7 @@ const db = pgp(connectionString)
 //CREATE A NEW USER
 
 const createUser = function (attributes) {
-  const sql = 
+  const sql =
   `INSERT INTO
       users (email, encrypted_password, created_at)
     VALUES
@@ -24,12 +24,12 @@ const createUser = function (attributes) {
 //AUTHENTICATE USER
 
 const authenticateUser = function (email) {
-  const sql = 
-  `SELECT 
+  const sql =
+  `SELECT
       *
     FROM
       users
-    WHERE 
+    WHERE
       email=$1
     LIMIT
       1`
@@ -44,11 +44,11 @@ const authenticateUser = function (email) {
 //GET USER BY ID
 
 const getUserByIdSQL = () =>
-  `SELECT 
-    * 
-  FROM 
-    users 
-  WHERE 
+  `SELECT
+    *
+  FROM
+    users
+  WHERE
     id=$1`
 
 const getUserById = userId => {
@@ -58,11 +58,11 @@ const getUserById = userId => {
 //GET ALL TO-DO'S BY USER ID
 
 const getAllTodosByUserIdSQL = () =>
-  `SELECT 
-    * 
-  FROM 
-    todos 
-  WHERE 
+  `SELECT
+    *
+  FROM
+    todos
+  WHERE
     user_id=$1
   ORDER BY
     rank DESC
@@ -75,13 +75,13 @@ const getAllTodosByUserId = userId => {
 //GET ALL COMPLETED TO-DO'S BY USER
 
 const getAllCompletedTodosByUserIdSQL = () =>
-  `SELECT 
-    * 
-  FROM 
-    todos 
-  WHERE 
-    user_id=$1 
-  AND 
+  `SELECT
+    *
+  FROM
+    todos
+  WHERE
+    user_id=$1
+  AND
     completed=true`
 
 const getAllCompletedTodosByUserId = userId => {
@@ -91,12 +91,12 @@ const getAllCompletedTodosByUserId = userId => {
 //GET ALL INCOMPLETE TO-DO'S BY USER
 
 const getAllIncompleteTodosByUserIdSQL = () =>
-  `SELECT * 
-  FROM 
-    todos 
-  WHERE 
-    user_id=$1 
-  AND 
+  `SELECT *
+  FROM
+    todos
+  WHERE
+    user_id=$1
+  AND
     completed=false`
 
 const getAllIncompleteTodosByUserId = userId => {
@@ -106,11 +106,11 @@ const getAllIncompleteTodosByUserId = userId => {
 //CREATE TO-DO
 
 const createTodoSQL = () =>
-  `INSERT INTO 
+  `INSERT INTO
     todos (user_id, title, completed, created_at, rank)
-  VALUES 
+  VALUES
     ($1, $2, false, now(), $3)
-  RETURNING 
+  RETURNING
     *`
 
 const createTodo = (userId, title) => {
@@ -118,13 +118,13 @@ const createTodo = (userId, title) => {
     const sql = `
       INSERT INTO
         todos (user_id, title, completed, created_at, rank)
-      VALUES 
+      VALUES
         ($1, $2, false, now(), $3)
-      RETURNING 
+      RETURNING
         *
     `
     const variables = [
-      userId, 
+      userId,
       title,
       rank
     ]
@@ -135,12 +135,12 @@ const createTodo = (userId, title) => {
 
 //GET FINAL RANK
 
-const getFinalRankSQL = () => 
-  `SELECT 
-    MAX(rank)+1 as rank 
-  FROM 
-    todos 
-  WHERE 
+const getFinalRankSQL = () =>
+  `SELECT
+    MAX(rank)+1 as rank
+  FROM
+    todos
+  WHERE
     user_id=$1`
 
 const getFinalRank = (userId) => {
@@ -204,36 +204,6 @@ const updateTodo = (attributes) => {
   return db.none(sql, variables)
 }
 
-//MOVE TO-DO UP IN RANK
-
-// const moveTodoRankUpSQL = () =>
-//   `UPDATE
-//     todos
-//   SET
-//     rank = (rank)-1
-//   WHERE
-//     todos.id=$1`
-
-// const moveTodoRankUp = (id) => {
-//   return db.one( moveTodoRankUpSQL(), [ id ])
-// }
-
-// //MOVE TO-DO DOWN IN RANK
-
-// const moveTodoRankDownSQL = () =>
-//   `UPDATE
-//     todos
-//   SET
-//     rank = (rank)+1
-//   WHERE
-//     todos.id=$1`
-
-// const moveTodoRankDown = (id) => {
-//   return db.one( moveTodoRankDownSQL(), [ id ])
-// }
-
-//DELETE TODO
-
 const deleteTodoSQL = () =>
   `DELETE FROM
     todos
@@ -289,7 +259,7 @@ const moveTodoDown = function(userId, todoId){
   return moveTodo(-1, userId, todoId)
 }
 
-export default { 
+export default {
   getUserByIdSQL,
   getUserById,
   getAllTodosByUserIdSQL,
@@ -312,10 +282,6 @@ export default {
   updateTodo,
   moveTodoUp,
   moveTodoDown,
-  // moveTodoRankUpSQL,
-  // moveTodoRankUp,
-  // moveTodoRankDownSQL,
-  // moveTodoRankDown,
   deleteTodoSQL,
   deleteTodo
 }
