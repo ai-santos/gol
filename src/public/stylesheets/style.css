@@ -44,3 +44,63 @@ input.todo-list-item-checkbox{
 {
   display: none;
 }
+
+
+.hometext {
+  background: linear-gradient( to right bottom, #E5D6A6, white );
+  text-decoration: none;
+  font: purple;
+  padding: 1em;
+}
+
+a:link {
+  color: #253956;
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #253956;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #253956;
+}
+
+.homepage-gradient-border-top-left {
+  position: absolute;
+  padding-top: 1.5em;
+  background-repeat: no-repeat;
+  background-size: 100% 4px;
+  border: 5px solid transparent;
+  -webkit-border-image: -webkit-linear-gradient(-68deg, #253956 9%, white 44%);
+  border-image-slice: 1;
+}
+
+.homepage-gradient-border-bottom-right {
+  position: absolute;
+  padding-top: 1.5em;
+  background-repeat: no-repeat;
+  background-size: 100% 4px;
+  border: 5px solid transparent;
+  -webkit-border-image: -webkit-linear-gradient(-67deg, #253956 9%, white 45%);
+  border-image-slice: 1;
+}
+
+
+.pp{
+  animation-duration: 10s;
+  animation-name: slidein;
+}
+
+keyframes slidein {
+  from {
+    margin-right: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
