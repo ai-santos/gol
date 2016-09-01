@@ -1,4 +1,8 @@
-
+#nav-ul, .content-width, .nav-links {
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+}
 
 .todo-list-item{
   padding: 5px 10px 5px 0;

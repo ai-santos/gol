@@ -26,14 +26,18 @@ block content
     - var className = (todo.completed ? 'complete-todo-list-item' : '')
     - if (newEmptyTodo) className +=' editing-todo-list-item'
     form.row.todo-list-item(class=className method="post" action="/todos/"+todo.id)
-      .col-sm-10
+      .col-sm-9
         input.todo-list-item-checkbox(type="checkbox" name="todo[completed]" checked=todo.completed)
         span.todo-list-item-title=todo.title
         input.form-control.todo-list-item-title-input(type="text" name="todo[title]" value=todo.title data-initial-value=todo.title autofocus=newEmptyTodo)
-      .col-sm-2
+      .col-sm-3
         .btn-group(role="group")
-          input.todo-list-item-edit-button.btn.btn-sm.btn-secondary(type="button" value="edit")
+          input.todo-list-item-edit-button.btn.btn-sm.btn-default(type="button" value="edit")
           a.todo-list-item-delete-button.btn.btn-sm.btn-danger(href="/todos/"+todo.id+"/delete") delete
+          a.todo-list-item-move-up-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-up" disabled=(index === 0))
+            i.glyphicon.glyphicon-chevron-up
+          a.todo-list-item-move-down-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-down" disabled=(index === (todos.length-1))) 
+            i.glyphicon.glyphicon-chevron-down
         .btn-group(role="group")
           input.todo-list-item-cancel-button.btn.btn-sm.btn-danger(type="button" value="cancel")
           input.todo-list-item-submit-button.btn.btn-sm.btn-primary(type="submit" value="save")
