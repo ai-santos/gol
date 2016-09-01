@@ -3,6 +3,7 @@ html(lang="en")
   head
     title Gol
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    link(href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz', rel='stylesheet')
     link(rel="stylesheet" href="/stylesheets/style.css")
     script(src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
@@ -10,30 +11,37 @@ html(lang="en")
 
   body
     .container
-      nav.content-width
-        ul#nav-ul
-          li.nav-links
-            a(href='/', title='Home') Home
-          li.nav-links
-            a(href='#', title='Blog') Blog
-          li.nav-links
-            a(href='#', title='Work') Work
-          li.nav-links
-            a(href='#', title='Resources') Resources
-          li.nav-links
-            a(href='#', title='Meta') Meta
-
       header
-        ul.list-inline
-          li
-            a(href="/") GOL
-          if loggedIn
+        nav.navbar-default
+          ul.header-list
             li
-              a(href="/logout") Logout
-          else 
-            li
-              a(href="/login") Login
-            li
-              a(href="/signup") Signup
-      
+              a(href="/" title="Home").brand
+                img(src="http://i.imgur.com/gogZFsYt.jpg")
+            if loggedIn
+              li
+                a(href="/logout" title="Logout" data-toggle="modal" data-target="#myModal") Logout
+            else
+              li
+                a(href="/signup" title="Signup") Signup
+              li
+                a(href="/login" title="Login") Login Gol
+              li
+                a(href='#', data-toggle='modal', data-target='#bannerformmodal') Load me
+        #bannerformmodal.modal.fade.bannerformmodal(tabindex='-1', role='dialog', aria-labelledby='bannerformmodal', aria-hidden='true')
+          .modal-dialog.modal-sm
+            .modal-content
+              .modal-content
+                .modal-header
+                  button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                  h4#myModalLabel.modal-title Contact Form
+                .modal-body
+                  form(method='post' action='/login')
+                    .form-group
+                      label(for='email') Email address
+                      input#email.form-control(type='email' name='user[email]' placeholder='Email')
+                    .form-group
+                      label(for='password') Password
+                      input#password.form-control(type='password' name='user[password]' placeholder='Password')
+                      button.btn.btn-primary(type='submit') Login
+       
       block content

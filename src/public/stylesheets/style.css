@@ -1,7 +1,37 @@
-#nav-ul, .content-width, .nav-links {
+a {
+  color: black;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3rem;
+  height: 100%;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: rgba(229, 214, 166, 0.92);
+}
+
+.header-list {
   display: flex;
-  width: 100%;
-  flex: 1 1 auto;
+  justify-content: flex-start;
+  align-items: top;
+  list-style: none;
+  padding-bottom: 50px;
+}
+
+/*.header-list > li > a:hover, .header-list > li > a:focus {
+  display: block;
+  color: white;
+  text-decoration: none;
+  background-color: rgba(229, 214, 166, 0.92);
+}
+*/
+
+.nav-logo {
+  left: 0px;
+  position: fixed;
+  top: 0auto;
 }
 
 .todo-list-item{
