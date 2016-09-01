@@ -1,35 +1,32 @@
 a {
-  color: #337ab7;
+  color: black;
+  display: inline-block;
   text-decoration: none;
-  padding-right: 250px;
-  font-family: Open sans serif;
-  font-size: larger;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3rem;
+  height: 100%;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: rgba(229, 214, 166, 0.92);
 }
 
 .header-list {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: top;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  padding-bottom: 50px;
 }
 
-.header-list > li > a:hover {
+/*.header-list > li > a:hover, .header-list > li > a:focus {
   display: block;
   color: white;
   text-decoration: none;
-  background-color: rgba(13, 60, 130, 0.92);
+  background-color: rgba(229, 214, 166, 0.92);
 }
-
-
-.header-list > li > a:hover, .header-list > li > a:focus {
-  display: block;
-  color: white;
-  text-decoration: none;
-  background-color: rgba(13, 60, 130, 0.92);
-}
-
+*/
 
 .nav-logo {
   left: 0px;
