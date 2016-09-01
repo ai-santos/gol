@@ -19,23 +19,23 @@ Goals
 
 #### User Stories:
 The App: As a user...
-- [ ] I can create to do list items.
-- [ ] I can delete unwanted to do list items.
-- [ ] I can check items off as completed.
-- [ ] I can rearrange to do list items. 
-- [ ] I can log into my account.
-- [ ] I can edit the text on existing to do's.
+- [X] I can create to do list items.
+- [X] I can delete unwanted to do list items.
+- [X] I can check items off as completed.
+- [X] I can rearrange to do list items. 
+- [X] I can log into my account.
+- [X] I can edit the text on existing to do's.
 
 #### Specs: 
-- [ ] Visitors can sign up, sign in and sign out.
-- [ ] Logged in users can CRUD to do list items on their one and only to do list.
-- [ ] Logged in users can order to do list items.
-- [ ] Deploy the app to heroku. 
+- [X] Visitors can sign up, sign in and sign out.
+- [X] Logged in users can CRUD to do list items on their one and only to do list.
+- [X] Logged in users can order to do list items.
+- [X] Deploy the app to heroku. 
 - [ ] JS Hint finds no mistakes
-- [ ] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
+- [X] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
 - [ ] Write all code in ES2016.
-- [ ] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
-- [ ] Logged in users can search their to do list items 
+- [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
+- [X] Logged in users can search their to do list items 
 
 ---
 
