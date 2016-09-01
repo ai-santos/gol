@@ -9,34 +9,34 @@ block content
   .row
     .col-sm-4
       input.form-control.todo-list-items-filter(type="text" value="" placeholder="filter…")
-        
-    .col-sm-6
+
+    .col-sm-4
       span.btn-group.todo-list-items-filter-buttons(role="group")
         button.btn.btn-default(data-filter="incomplete") incomplete
         button.btn.btn-default.active(data-filter="all") all
         button.btn.btn-default(data-filter="complete") complete
-      
-    .col-sm-2
+
+    .col-sm-4
       form(method="post" action="/todos")
         input(type="hidden" name="todo[title]" value="")
         input.new-todo-list-item-button.btn.btn-default(type="submit" value="+")
- 
+
   for todo, index in todos
     - var newEmptyTodo = (index === 0 && todo.title === "")
     - var className = (todo.completed ? 'complete-todo-list-item' : '')
     - if (newEmptyTodo) className +=' editing-todo-list-item'
     form.row.todo-list-item(class=className method="post" action="/todos/"+todo.id)
-      .col-sm-9
+      .col-sm-8
         input.todo-list-item-checkbox(type="checkbox" name="todo[completed]" checked=todo.completed)
         span.todo-list-item-title=todo.title
         input.form-control.todo-list-item-title-input(type="text" name="todo[title]" value=todo.title data-initial-value=todo.title autofocus=newEmptyTodo)
-      .col-sm-3
+      .col-sm-4
         .btn-group(role="group")
           input.todo-list-item-edit-button.btn.btn-sm.btn-default(type="button" value="edit")
           a.todo-list-item-delete-button.btn.btn-sm.btn-danger(href="/todos/"+todo.id+"/delete") delete
           a.todo-list-item-move-up-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-up" disabled=(index === 0))
             i.glyphicon.glyphicon-chevron-up
-          a.todo-list-item-move-down-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-down" disabled=(index === (todos.length-1))) 
+          a.todo-list-item-move-down-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-down" disabled=(index === (todos.length-1)))
             i.glyphicon.glyphicon-chevron-down
         .btn-group(role="group")
           input.todo-list-item-cancel-button.btn.btn-sm.btn-danger(type="button" value="cancel")
