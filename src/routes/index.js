@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 router.use( (request, response, next) => {
-  request.session.lastLogin = (new Date).toString()
+  request.session.lastLogin = (new Date()).toString()
   request.session.requestCount++;
   request.loggedIn = 'userId' in request.session
   response.locals.loggedIn = request.loggedIn
@@ -56,7 +56,7 @@ router.get('/logout', (request, response) => {
 })
 
 router.post('/login', (request, response) => {
-  var auth = request.body.user
+  let auth = request.body.user
 
   database.authenticateUser(auth.email)
     .then(user => {
