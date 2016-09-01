@@ -1,5 +1,9 @@
 $(function(){
 
+  $('a[href][disabled]').on('click', function(event){
+    event.preventDefault()
+  });
+  
   const filterTodoList = function(){
     const filter = $('.todo-list-items-filter').val().toLowerCase()
     const completedFilter = $('.todo-list-items-filter-buttons .active').data('filter')

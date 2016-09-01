@@ -128,6 +128,26 @@ router.get('/todos/:todoId/delete', (request, response) => {
     .catch(renderError(response))
 })
 
+router.get('/todos/:todoId/move-up', (request, response) => {
+  const userId = request.session.userId
+  const todoId = parseInt(request.params.todoId, 10)
+  database.moveTodoUp(userId, todoId)
+    .then(() => {
+      response.redirect('/dashboard')
+    })
+    .catch(renderError(response))
+});
+
+router.get('/todos/:todoId/move-down', (request, response) => {
+  const userId = request.session.userId
+  const todoId = parseInt(request.params.todoId, 10)
+  database.moveTodoDown(userId, todoId)
+    .then(() => {
+      response.redirect('/dashboard')
+    })
+    .catch(renderError(response))
+});
+
 const renderError = function(response){
   return function(error){
     response.status(500).render('error',{

@@ -65,8 +65,7 @@ const getAllTodosByUserIdSQL = () =>
   WHERE 
     user_id=$1
   ORDER BY
-    created_at DESC,
-    id ASC
+    rank DESC
   `
 
 const getAllTodosByUserId = userId => {
@@ -207,31 +206,31 @@ const updateTodo = (attributes) => {
 
 //MOVE TO-DO UP IN RANK
 
-const moveTodoRankUpSQL = () =>
-  `UPDATE
-    todos
-  SET
-    rank = (rank)-1
-  WHERE
-    todos.id=$1`
+// const moveTodoRankUpSQL = () =>
+//   `UPDATE
+//     todos
+//   SET
+//     rank = (rank)-1
+//   WHERE
+//     todos.id=$1`
 
-const moveTodoRankUp = (id) => {
-  return db.one( moveTodoRankUpSQL(), [ id ])
-}
+// const moveTodoRankUp = (id) => {
+//   return db.one( moveTodoRankUpSQL(), [ id ])
+// }
 
-//MOVE TO-DO DOWN IN RANK
+// //MOVE TO-DO DOWN IN RANK
 
-const moveTodoRankDownSQL = () =>
-  `UPDATE
-    todos
-  SET
-    rank = (rank)+1
-  WHERE
-    todos.id=$1`
+// const moveTodoRankDownSQL = () =>
+//   `UPDATE
+//     todos
+//   SET
+//     rank = (rank)+1
+//   WHERE
+//     todos.id=$1`
 
-const moveTodoRankDown = (id) => {
-  return db.one( moveTodoRankDownSQL(), [ id ])
-}
+// const moveTodoRankDown = (id) => {
+//   return db.one( moveTodoRankDownSQL(), [ id ])
+// }
 
 //DELETE TODO
 
@@ -245,9 +244,50 @@ const deleteTodo = (id) => {
   return db.none( deleteTodoSQL(), [ id ])
 }
 
+const swapTodoRanks = function(todoA, todoB){
+  const sqlA = `
+    UPDATE
+      todos
+    SET
+      rank=$2
+    WHERE
+      id=$1
+  `
+  const variablesA = [todoA.id, todoB.rank]
 
+  const sqlB = `
+    UPDATE
+      todos
+    SET
+      rank=$2
+    WHERE
+      id=$1
+  `
+  const variablesB = [todoB.id, todoA.rank]
 
-moveTodoRankUp(2).then( data => console.log(data))
+  return Promise.all([
+    db.none(sqlA, variablesA),
+    db.none(sqlB, variablesB),
+  ])
+
+}
+
+const moveTodo = function(direction, userId, todoId){
+  return getAllTodosByUserId(userId)
+    .then(todos => {
+      const todoA = todos.find(todo => todo.id === todoId)
+      const oldRank = todoA.rank
+      const newRank = oldRank + direction
+      const todoB = todos.find(todo => todo.rank === newRank)
+      return swapTodoRanks(todoA, todoB)
+    })
+}
+const moveTodoUp = function(userId, todoId){
+  return moveTodo(1, userId, todoId)
+};
+const moveTodoDown = function(userId, todoId){
+  return moveTodo(-1, userId, todoId)
+}
 
 export default { 
   getUserByIdSQL,
@@ -270,10 +310,12 @@ export default {
   markTodoIncomplete,
   updateTodoSQL,
   updateTodo,
-  moveTodoRankUpSQL,
-  moveTodoRankUp,
-  moveTodoRankDownSQL,
-  moveTodoRankDown,
+  moveTodoUp,
+  moveTodoDown,
+  // moveTodoRankUpSQL,
+  // moveTodoRankUp,
+  // moveTodoRankDownSQL,
+  // moveTodoRankDown,
   deleteTodoSQL,
   deleteTodo
 }

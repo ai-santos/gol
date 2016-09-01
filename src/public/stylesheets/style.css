@@ -34,6 +34,8 @@ input.todo-list-item-checkbox{
 
 .todo-list-item.editing-todo-list-item .todo-list-item-title,
 .todo-list-item.editing-todo-list-item .todo-list-item-edit-button,
+.todo-list-item.editing-todo-list-item .todo-list-item-move-up-button,
+.todo-list-item.editing-todo-list-item .todo-list-item-move-down-button,
 .todo-list-item.editing-todo-list-item .todo-list-item-delete-button
 {
   display: none;
