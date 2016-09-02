@@ -45,12 +45,6 @@ router.post('/signup', (request, response) => {
     .catch(renderError(response))
 })
 
-router.get('/login', (request, response) => {
-  const email = request.session.email
-  response.render('users/login', {
-  })
-})
-
 router.get('/logout', (request, response) => {
   delete request.session.userId
   response.redirect('/')
