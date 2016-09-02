@@ -1,23 +1,54 @@
-a {
+/*a {
   color: black;
   display: inline-block;
   text-decoration: none;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 3rem;
-  height: 100%;
 }
 
 a:hover {
   text-decoration: none;
   background-color: rgba(229, 214, 166, 0.92);
+}*/
+
+header{
+  border: 1px solid black;
+  border-width: 0 1px 1px 1px;
+  background-color: lightgrey;
 }
+
 
 .header-list {
   display: flex;
-  justify-content: flex-start;
-  align-items: top;
-  list-style: none;
-  padding-bottom: 50px;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.header-list a{
+  line-height: 100px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3rem;
+  padding: 0 0.25em;
+}
+.header-list a,
+.header-list a:hover,
+.header-list a:active{
+  text-decoration: none;
+}
+.header-list a:hover{
+  background-color: rgba(229, 214, 166, 0.92);
+}
+header .logo {
+  font-size: 90px;
+}
+
+
+
+.page-banner{
+  margin-bottom: 20px;
+  height: 200px;
+  background-color: red;
 }
 
 /*.header-list > li > a:hover, .header-list > li > a:focus {
@@ -77,10 +108,8 @@ input.todo-list-item-checkbox{
 
 
 .hometext {
-  background: linear-gradient( to right bottom, #E5D6A6, white );
-  text-decoration: none;
-  font: purple;
   padding: 1em;
+  margin: 0;
 }
 
 a:link {
@@ -99,13 +128,14 @@ a:hover {
 }
 
 .homepage-gradient-border-top-left {
-  position: absolute;
-  padding-top: 1.5em;
+  /*position: absolute;*/
+  /*padding-top: 1.5em;*/
   background-repeat: no-repeat;
   background-size: 100% 4px;
   border: 5px solid transparent;
   -webkit-border-image: -webkit-linear-gradient(-68deg, #253956 9%, white 44%);
   border-image-slice: 1;
+  background: linear-gradient( to right bottom, #E5D6A6, white );
 }
 
 .homepage-gradient-border-bottom-right {
@@ -140,3 +170,4 @@ keyframes slidein {
 .todo-list-controls > * {
   margin-bottom: 5px;
 }
+

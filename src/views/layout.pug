@@ -10,22 +10,7 @@ html(lang="en")
     script(src="/javascripts/browser.js")
 
   body
-    .container
-      header
-        nav.navbar-default
-          ul.header-list
-            li
-              a(href="/" title="Home").brand
-                img(src="http://i.imgur.com/gogZFsYt.jpg")
-            if loggedIn
-              li
-                a(href="/logout" title="Logout") Logout
-            else
-              li
-                a(href="#", data-toggle="modal", data-target="#signupmodal") Sign up
-              li
-                a(href="#", data-toggle="modal", data-target="#loginmodal") Login
-              #loginmodal.modal.fade.bannerformmodal(tabindex="-1", role="dialog", aria-labelledby="loginmodal", aria-hidden="true")
+    #loginmodal.modal.fade.bannerformmodal(tabindex="-1", role="dialog", aria-labelledby="loginmodal", aria-hidden="true")
                 .modal-dialog.modal-sm
                   .modal-content
                     .modal-content
@@ -41,24 +26,36 @@ html(lang="en")
                             label(for="password") Password
                             input#password.form-control(type="password" name="user[password]" placeholder="Password")
                             button.btn.btn-primary(type="submit") Login
-       
-              #signupmodal.modal.fade.bannerformmodal(tabindex="-1", role="dialog", aria-labelledby="signupmodal", aria-hidden="true")
-                .modal-dialog.modal-sm
-                  .modal-content
-                    .modal-content
-                      .modal-header
-                        button.close(type="button", data-dismiss="modal", aria-hidden="true") ×
-                        h4#myModalLabel.modal-title Sign up 
-                      .modal-body
-                        form(method="post" action="/signup")
-                          .form-group
-                            label(for="email") Email address
-                            input#email.form-control(type="email" name="user[email]" placeholder="Email")
-                          .form-group
-                            label(for="password") Password
-                            input#password.form-control(type="password" name="user[password]" placeholder="Password")
-                          .form-group
-                            label(for="password-confirmation") Password Confirmation
-                            input#password-confirmation.form-control(type="password" name="user[password_confirmation]" placeholder="Password Confirmation")
-                          button.btn.btn-primary(type="submit") Sign up
+
+    #signupmodal.modal.fade.bannerformmodal(tabindex="-1", role="dialog", aria-labelledby="signupmodal", aria-hidden="true")
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-content
+            .modal-header
+              button.close(type="button", data-dismiss="modal", aria-hidden="true") ×
+              h4#myModalLabel.modal-title Sign up 
+            .modal-body
+              form(method="post" action="/signup")
+                .form-group
+                  label(for="email") Email address
+                  input#email.form-control(type="email" name="user[email]" placeholder="Email")
+                .form-group
+                  label(for="password") Password
+                  input#password.form-control(type="password" name="user[password]" placeholder="Password")
+                .form-group
+                  label(for="password-confirmation") Password Confirmation
+                  input#password-confirmation.form-control(type="password" name="user[password_confirmation]" placeholder="Password Confirmation")
+                button.btn.btn-primary(type="submit") Sign up
+    .container
+      .row
+        .col-lg-12
+          header
+            nav
+              .header-list
+                a(href="/" title="Home").logo GOL
+                if loggedIn
+                  a(href="/logout" title="Logout") Logout
+                else
+                  a(href="#", data-toggle="modal", data-target="#signupmodal") Sign up
+                  a(href="#", data-toggle="modal", data-target="#loginmodal") Login  
       block content
