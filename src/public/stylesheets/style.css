@@ -51,14 +51,18 @@ nav .logo {
   height: 300px;
   background-color: black;
 }
-.page-banner > video{
+.page-banner > *{
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
   min-height: 100%;
 }
-
+.page-banner > h1{
+  color: white;
+  text-align: center;
+  font-size: 200px;
+}
 
 /*.header-list > li > a:hover, .header-list > li > a:focus {
   display: block;
