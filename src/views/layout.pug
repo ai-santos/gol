@@ -46,16 +46,16 @@ html(lang="en")
                   label(for="password-confirmation") Password Confirmation
                   input#password-confirmation.form-control(type="password" name="user[password_confirmation]" placeholder="Password Confirmation")
                 button.btn.btn-primary(type="submit") Sign up
+    nav.navbar-fixed-top
+      .container
+        .row
+          .col-lg-12
+            .header-list
+              a(href="/" title="Home").logo GOL
+              if loggedIn
+                a(href="/logout" title="Logout") Logout
+              else
+                a(href="#", data-toggle="modal", data-target="#signupmodal") Sign up
+                a(href="#", data-toggle="modal", data-target="#loginmodal") Login  
     .container
-      .row
-        .col-lg-12
-          header
-            nav
-              .header-list
-                a(href="/" title="Home").logo GOL
-                if loggedIn
-                  a(href="/logout" title="Logout") Logout
-                else
-                  a(href="#", data-toggle="modal", data-target="#signupmodal") Sign up
-                  a(href="#", data-toggle="modal", data-target="#loginmodal") Login  
       block content
