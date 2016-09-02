@@ -15,8 +15,6 @@ body > .container {
   margin-top: 60px;
 }
 
-
-
 .header-list {
   display: flex;
   flex-wrap: nowrap;
@@ -68,14 +66,6 @@ body > .container {
   text-align: center;
   font-size: 200px;
 }
-
-/*.header-list > li > a:hover, .header-list > li > a:focus {
-  display: block;
-  color: white;
-  text-decoration: none;
-  background-color: rgba(229, 214, 166, 0.92);
-}
-*/
 
 .nav-logo {
   left: 0px;
@@ -167,7 +157,7 @@ a:hover {
 }
 
 
-.pp{
+/*.pp{
   animation-duration: 10s;
   animation-name: slidein;
 }
@@ -182,7 +172,7 @@ keyframes slidein {
     margin-right: 0%;
     width: 100%;
   }
-}
+}*/
 
 
 .todo-list-controls > * {
