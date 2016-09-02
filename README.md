@@ -1,5 +1,5 @@
 # gol
-Welcome to the [Gol Web App](Welcome to the Gol Web App, where you can create the only to-do list you'll ever need.), where you can create the only to-do list you'll ever need. Live, on Heroku!
+Welcome to the [Gol Web App](https://pacific-mesa-82379.herokuapp.com), where you can create the only to-do list you'll ever need. Live, on Heroku!
 
 STACK: to-do app built with Express, Node, and SQL
 
