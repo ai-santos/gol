@@ -12,8 +12,9 @@ a:hover {
 }*/
 
 body > .container {
-  margin-top: 80px;
+  margin-top: 60px;
 }
+
 
 
 .header-list {
@@ -22,26 +23,30 @@ body > .container {
   flex-direction: row;
   justify-content: space-around;
   align-items: stretch;
-  background-color: lightgrey;
+  background: linear-gradient(to left, grey 20%, black 50%);
 }
-.header-list a{
+.header-list a:link,
+.header-list a:visited{
   line-height: 70px;
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 3rem;
   padding: 0 0.25em;
+  color: rgba(246, 224, 54, 1);
 }
 .header-list a,
 .header-list a:hover,
 .header-list a:active{
   text-decoration: none;
+  color: #fff;
 }
 .header-list a:hover{
-  background-color: rgba(229, 214, 166, 0.92);
-}
-nav .logo {
-  font-size: 60px;
+  color: black;
+  background-color: white;
 }
 
+.header-list a.logo {
+  font-size: 60px;
+}
 
 
 .page-banner{
