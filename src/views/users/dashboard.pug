@@ -8,17 +8,17 @@ block content
       div
         small= currentUser.email
 
-  .row
-    .col-sm-4
+  .row.todo-list-controls
+    .col-sm-12.col-md-4
       input.form-control.todo-list-items-filter(type="text" value="" placeholder="filter…")
 
-    .col-sm-4
+    .col-sm-12.col-md-4
       span.btn-group.todo-list-items-filter-buttons(role="group")
         button.btn.btn-default(data-filter="incomplete") incomplete
         button.btn.btn-default.active(data-filter="all") all
         button.btn.btn-default(data-filter="complete") complete
 
-    .col-sm-4
+    .col-sm-12.col-md-4
       form(method="post" action="/todos")
         input(type="hidden" name="todo[title]" value="")
         input.new-todo-list-item-button.btn.btn-default(type="submit" value="+")

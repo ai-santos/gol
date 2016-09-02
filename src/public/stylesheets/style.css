@@ -127,10 +127,16 @@ a:hover {
 keyframes slidein {
   from {
     margin-right: 100%;
-    width: 300%; 
+    width: 300%;
   }
 
   to {
     margin-right: 0%;
     width: 100%;
   }
+}
+
+
+.todo-list-controls > * {
+  margin-bottom: 5px;
+}
