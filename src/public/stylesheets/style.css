@@ -1,15 +1,3 @@
-/*a {
-  color: black;
-  display: inline-block;
-  text-decoration: none;
-  font-family: 'Yanone Kaffeesatz', sans-serif;
-  font-size: 3rem;
-}
-
-a:hover {
-  text-decoration: none;
-  background-color: rgba(229, 214, 166, 0.92);
-}*/
 
 body > .container {
   margin-top: 60px;
@@ -52,7 +40,10 @@ body > .container {
 .page-banner{
   position: relative;
   overflow: hidden;
+<<<<<<< HEAD
+=======
 /*  margin-bottom: 20px;*/
+>>>>>>> b4103cef250317be24562b2910fe053e06357041
   height: 300px;
   background-color: black;
 }
@@ -69,13 +60,10 @@ body > .container {
   font-size: 200px;
 }
 
-/*.header-list > li > a:hover, .header-list > li > a:focus {
-  display: block;
-  color: white;
-  text-decoration: none;
-  background-color: rgba(229, 214, 166, 0.92);
+video.page-banner {
+  filter: grayscale(100%);
 }
-*/
+
 
 .nav-logo {
   left: 0px;
@@ -85,6 +73,7 @@ body > .container {
 
 .todo-list-item{
   padding: 5px 10px 5px 0;
+  border: #F6E036;
 }
 
 input.todo-list-item-checkbox{
@@ -128,64 +117,46 @@ input.todo-list-item-checkbox{
 .hometext {
   padding: 1em;
   margin: 0;
+  color: white;
+ /* font-family: 'Yanone Kaffeesatz', sans-serif;*/
+  font-size: 2em;
 }
 
-a:link {
-  color: #253956;
+.hometext a:link {
+  color: white;
   text-decoration: none;
 }
 
-a:visited {
+.hometext a:visited {
   text-decoration: none;
-  color: #253956;
+  color: white;
 }
 
-a:hover {
+.hometext a:hover {
   text-decoration: underline;
-  color: #253956;
+  color: white;
 }
 
-.homepage-gradient-border-top-left {
-  /*position: absolute;*/
-  /*padding-top: 1.5em;*/
-  background-repeat: no-repeat;
-  background-size: 100% 4px;
-  border: 5px solid transparent;
-  -webkit-border-image: -webkit-linear-gradient(-68deg, #253956 9%, white 44%);
-  border-image-slice: 1;
-  background: linear-gradient( to right bottom, #E5D6A6, white );
-}
-
-.homepage-gradient-border-bottom-right {
-  position: absolute;
+.homepage-gradient-block {
   padding-top: 1.5em;
   background-repeat: no-repeat;
   background-size: 100% 4px;
-  border: 5px solid transparent;
-  -webkit-border-image: -webkit-linear-gradient(-67deg, #253956 9%, white 45%);
-  border-image-slice: 1;
-}
-
-
-.pp{
-  animation-duration: 10s;
-  animation-name: slidein;
-}
-
-keyframes slidein {
-  from {
-    margin-right: 100%;
-    width: 300%;
-  }
-
-  to {
-    margin-right: 0%;
-    width: 100%;
-  }
+  opacity: .9;
+  border-top: 5px solid #F6E036;
+  border-bottom: 5px solid #F6E036;
+  background: linear-gradient(to right, grey 10%, black 90%);;
 }
 
 
 .todo-list-controls > * {
   margin-bottom: 5px;
+}
+
+.center{
+  text-align: center;
+}
+
+.right{
+  text-align: right;
 }
 
