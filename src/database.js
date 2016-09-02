@@ -21,6 +21,7 @@ const createUser = function (attributes) {
   ]
 
   return db.one(sql, variables)
+    .then(user => createTodo(user.id, '').then(todo => user))
 }
 
 //AUTHENTICATE USER
