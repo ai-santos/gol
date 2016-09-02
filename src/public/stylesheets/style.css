@@ -40,6 +40,10 @@ body > .container {
 .page-banner{
   position: relative;
   overflow: hidden;
+<<<<<<< HEAD
+=======
+/*  margin-bottom: 20px;*/
+>>>>>>> b4103cef250317be24562b2910fe053e06357041
   height: 300px;
   background-color: black;
 }
