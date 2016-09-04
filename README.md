@@ -1,4 +1,8 @@
+https://pacific-mesa-82379.herokuapp.com/
+
 # gol
+Welcome to the [Gol Web App](https://pacific-mesa-82379.herokuapp.com), where you can create the only to-do list you'll ever need. Live, on Heroku!
+
 STACK: to-do app built with Express, Node, and SQL
 
 # To Do List
@@ -31,9 +35,9 @@ The App: As a user...
 - [X] Logged in users can CRUD to do list items on their one and only to do list.
 - [X] Logged in users can order to do list items.
 - [X] Deploy the app to heroku. 
-- [ ] JS Hint finds no mistakes
+- [X] JS Hint finds no mistakes
 - [X] Follow good Git team behaviors (do all your work on branches & submit pull requests for review before merging to master)
-- [ ] Write all code in ES2016.
+- [X] Write all code in ES2016.
 - [X] The artifact produced is properly licensed, preferably with the [MIT license][mit-license].
 - [X] Logged in users can search their to do list items 
 
