@@ -3,6 +3,10 @@ body > .container {
   margin-top: 60px;
 }
 
+.navbar-fixed-top {
+  min-width: 100%;
+}
+
 .header-list {
   display: flex;
   flex-wrap: nowrap;
@@ -39,6 +43,7 @@ body > .container {
   position: relative;
   overflow: hidden;
   height: 500px;
+  width: 100%;
   background-color: black;
 }
 .page-banner > *{
@@ -136,8 +141,6 @@ input.todo-list-item-checkbox{
   border-bottom: 5px solid #F6E036;
   background: linear-gradient(to right, grey 10%, black 90%);;
 }
-
-
 
 /*.pp{
   animation-duration: 10s;
