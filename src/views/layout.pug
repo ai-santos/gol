@@ -2,6 +2,7 @@ doctype html
 html(lang="en")
   head
     title Gol
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
     link(href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz", rel="stylesheet")
     link(rel="stylesheet" href="/stylesheets/style.css")
@@ -46,6 +47,7 @@ html(lang="en")
                   label(for="password-confirmation") Password Confirmation
                   input#password-confirmation.form-control(type="password" name="user[password_confirmation]" placeholder="Password Confirmation")
                 button.btn.btn-primary(type="submit") Sign up
+
     nav.navbar-fixed-top
       .container
         .row
