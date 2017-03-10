@@ -83,7 +83,7 @@ router.get('/dashboard', (request, response) => {
         currentUser: currentUser,
         todos: todos
       })
-    })
+    }).
     .catch(renderError(response))
   } else {
     response.redirect('/')

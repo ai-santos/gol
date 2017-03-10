@@ -139,7 +139,6 @@ const createTodo = (userId, title) => {
     ]
     return db.one(sql, variables)
   })
-
 }
 
 //GET FINAL RANK
