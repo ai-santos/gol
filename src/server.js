@@ -21,7 +21,7 @@ server.use(bodyParser.urlencoded({ extended: true }))
 server.use(cookieSession({
   name: 'session',
   keys: [
-    '8116ab0b6db1bc95124d0846905355988ebd4254', 
+    '8116ab0b6db1bc95124d0846905355988ebd4254',
     'e37eb286cef14df95d61f2420d19f2a292147fcf'
   ]
 }))
