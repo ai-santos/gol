@@ -125,6 +125,12 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 COPY todos (id, user_id, title, completed, created_at, rank) FROM stdin;
+1	1	study authentication	t	2017-03-16 14:08:14.456655	1
+2	2	study CSS3	t	2017-03-16 14:08:14.456655	1
+3	3	study routing	t	2017-03-16 14:08:14.456655	1
+4	1	read 1000 lines of code	t	2017-03-16 14:08:14.456655	1
+5	2	study wordpress lol	t	2017-03-16 14:08:14.456655	1
+6	3	play music with Ethan	t	2017-03-16 14:08:14.456655	1
 \.
 
 
@@ -132,7 +138,7 @@ COPY todos (id, user_id, title, completed, created_at, rank) FROM stdin;
 -- Name: todos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: asantos3026
 --
 
-SELECT pg_catalog.setval('todos_id_seq', 1, false);
+SELECT pg_catalog.setval('todos_id_seq', 6, true);
 
 
 --
@@ -140,10 +146,9 @@ SELECT pg_catalog.setval('todos_id_seq', 1, false);
 --
 
 COPY users (id, avatar, email, encrypted_password, created_at) FROM stdin;
-1	https://api.adorable.io/avatars/285/abott@adorable.png	a@a.a	1234	2017-03-16 10:39:51.934982
-2	http://lorempixel.com/400/200/	b@b.b	test	2017-03-16 10:44:26.281273
-3	http://lorempixel.com/400/200/	c@c.c	password	2017-03-16 10:44:26.281273
-4	http://lorempixel.com/400/200/	d@d.d	password	2017-03-16 10:44:26.281273
+1	\N	a@a.a	test	2017-03-16 14:05:31.843078
+2	\N	b@b.b	test	2017-03-16 14:06:40.520838
+3	\N	c@c.c	test	2017-03-16 14:07:40.46993
 \.
 
 
@@ -151,7 +156,7 @@ COPY users (id, avatar, email, encrypted_password, created_at) FROM stdin;
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: asantos3026
 --
 
-SELECT pg_catalog.setval('users_id_seq', 1, false);
+SELECT pg_catalog.setval('users_id_seq', 3, true);
 
 
 --
@@ -168,13 +173,6 @@ ALTER TABLE ONLY todos
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
--- Name: email; Type: INDEX; Schema: public; Owner: asantos3026
---
-
-CREATE UNIQUE INDEX email ON users USING btree (email);
 
 
 --
