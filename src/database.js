@@ -1,5 +1,5 @@
 const databaseName = 'goldb'
-const DATABASE_URL = postgres:'//rqpbakuovtmuqd:dMKo8fS5BqkTHfWCbsoj08RPn6@ec2-54-83-47-88.compute-1.amazonaws.com:5432/d626jhrft2qt9d'
+const DATABASE_URL = postgres://rqpbakuovtmuqd:dMKo8fS5BqkTHfWCbsoj08RPn6@ec2-54-83-47-88.compute-1.amazonaws.com:5432/d626jhrft2qt9d
 const connectionString = process.env.DATABASE_URL || `postgres://${process.env.USER}@localhost:5432/${databaseName}`
 const pgp = require('pg-promise')()
 const db = pgp(connectionString)
