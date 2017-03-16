@@ -1,8 +1,3 @@
-DROP DATABASE IF EXISTS goldb;
-CREATE DATABASE goldb;
-
-\c goldb;
-
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(

@@ -38,10 +38,10 @@ block content
           .btn-group(role="group")
             input.todo-list-item-edit-button.btn.btn-sm.btn-default(type="button" value="edit")
             a.todo-list-item-delete-button.btn.btn-sm.btn-danger(href="/todos/"+todo.id+"/delete") delete
-            a.todo-list-item-move-up-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-up" disabled=(index === 0))
-              i.glyphicon.glyphicon-chevron-up
-            a.todo-list-item-move-down-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-down" disabled=(index === (todos.length-1)))
-              i.glyphicon.glyphicon-chevron-down
+            // a.todo-list-item-move-up-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-up" disabled=(index === 0))
+            //   i.glyphicon.glyphicon-chevron-up
+            // a.todo-list-item-move-down-button.btn.btn-sm.btn-default(href="/todos/"+todo.id+"/move-down" disabled=(index === (todos.length-1)))
+            //   i.glyphicon.glyphicon-chevron-down
           .btn-group(role="group")
             input.todo-list-item-cancel-button.btn.btn-sm.btn-danger(type="button" value="cancel")
             input.todo-list-item-submit-button.btn.btn-sm.btn-primary(type="submit" value="save")
